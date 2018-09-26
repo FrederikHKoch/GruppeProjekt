@@ -11,7 +11,6 @@ namespace ConsoleApp1
 
         public static void Create()
         {
-
             Console.WriteLine("Indtast bilens model");
             string modelIN = Console.ReadLine();
             Console.WriteLine("Indtast bilens mærke");

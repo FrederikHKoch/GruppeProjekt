@@ -14,6 +14,7 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Indtast kundens navn");
             string kundeIN = Console.ReadLine();
+            kundeIN = ErrorHandling.BigStartLetters(ErrorHandling.Isvalid(kundeIN));
             Console.WriteLine("Adresse");
             string addIN = Console.ReadLine();
             Console.WriteLine("Indtast kundens alder");
@@ -46,6 +47,7 @@ namespace ConsoleApp1
                 case 1:
                     Console.Write("Skriv din ændring: ");
                     string retNavn = Console.ReadLine();
+                    retNavn = ErrorHandling.BigStartLetters(ErrorHandling.Isvalid(retNavn));
                     fullSentence = "update customers set navn = ('" + retNavn + "') where id = ('" + chooseCustomer + "')";
                     SQLCon.Update(fullSentence);
                     break;

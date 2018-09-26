@@ -15,68 +15,76 @@ namespace ConsoleApp1
             bool done = true;
             do
             {
-                Misc.ProgramStart();
-                string choice = Console.ReadLine();
-                switch (choice.ToUpper())
+                try
                 {
-                    case "K":
-                        Misc.CustomerPart();
-                        int answer = Convert.ToInt32(Console.ReadLine());
-                        switch (answer)
-                        {
-                            case 1:
-                                Costumer.Create();
-                                Console.WriteLine("Tilføj nu bil til kunde");
-                                Bil.Create();
-                                break;
-                            case 2:
-                                SQLCon.Select("Select * from customers");
-                                SQLCon.Select("Select * from Car");
-                                break;
-                            case 3:
-                                Costumer.Update();                               
-                                break;
-                            case 4:
-                                Costumer.Delete();
-                                Bil.Delete();
-                                break;
-                        }
-                        break;
-                    case "B":
-                        Misc.AskCar();
-                        int ChoiceCar = Convert.ToInt32(Console.ReadLine());  
-                        switch (ChoiceCar)
-                        {
-                            case 1:
-                                Bil.AddCar();
-                                break;
-                            case 2:
-                                Bil.Delete();
-                                break;
-                            case 3:
-                                Bil.Update();
-                                break;
-                            default:
-                                Console.WriteLine();
-                                break;
-                        }
-                        break;
-                    default:
+                    Misc.ProgramStart();
+                    string choice = Console.ReadLine();
+                    switch (choice.ToUpper())
+                    {
+                        case "K":
+                            Misc.CustomerPart();
+                            int answer = Convert.ToInt32(Console.ReadLine());
+                            switch (answer)
+                            {
+                                case 1:
+                                    Costumer.Create();
+                                    Console.WriteLine("Tilføj nu bil til kunde");
+                                    //Bil.Create();
+                                    break;
+                                case 2:
+                                    SQLCon.Select("Select * from customers");
+                                    SQLCon.Select("Select * from Car");
+                                    break;
+                                case 3:
+                                    Costumer.Update();
+                                    break;
+                                case 4:
+                                    Costumer.Delete();
+                                    Bil.Delete();
+                                    break;
+                            }
+                            break;
+                        case "B":
+                            Misc.AskCar();
+                            int ChoiceCar = Convert.ToInt32(Console.ReadLine());
+                            switch (ChoiceCar)
+                            {
+                                case 1:
+                                    Bil.AddCar();
+                                    break;
+                                case 2:
+                                    Bil.Delete();
+                                    break;
+                                case 3:
+                                    Bil.Update();
+                                    break;
+                                default:
+                                    Console.WriteLine();
+                                    break;
+                            }
+                            break;
+                        default:
+                            Misc.Load();
+                            break;
+
+
+                    }
+                    Misc.Ask();
+                    string Choice = Console.ReadLine();
+                    if (Choice.ToUpper() == "Y")
+                    {
+                    }
+                    else
+                    {
                         Misc.Load();
-                        break;
-
-
+                        done = false;
+                    }
                 }
-                Misc.Ask();
-                string Choice = Console.ReadLine();
-                if (Choice.ToUpper() == "Y")
-                {                    
-                }
-                else
+                catch (Exception e)
                 {
-                    Misc.Load();
-                    done = false;
+                    Console.WriteLine(e.Message);
                 }
+                
             }
             while (done);            
         }

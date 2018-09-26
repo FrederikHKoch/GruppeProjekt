@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Bil.cs" />
     <Compile Include="Costumer.cs" />
+    <Compile Include="ErrorHandling.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
