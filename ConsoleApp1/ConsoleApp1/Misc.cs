@@ -10,6 +10,7 @@ namespace ConsoleApp1
     {
         public static void Load()
         {
+
             Console.WriteLine("Loading.");
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
