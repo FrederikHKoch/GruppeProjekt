@@ -15,57 +15,66 @@ namespace ConsoleApp1
             bool done = true;
             do
             {
-                Console.WriteLine("");
-                Console.WriteLine("Autoværksteds App");
-                Console.WriteLine("Gør alt herinde fra");
-
-                Console.WriteLine("1. Opret en ny kunde og bil");
-                Console.WriteLine("2. Se kunde info");
-                Console.WriteLine("3. Opdater kunde");
-                Console.WriteLine("4. Slet kunde");
-
-                int answer = Convert.ToInt32(Console.ReadLine());
-                switch (answer)
+                Misc.ProgramStart();
+                string choice = Console.ReadLine();
+                switch (choice.ToUpper())
                 {
-                    case 1:
-                        Costumer.Create();
-                        Console.WriteLine("Vil du gerne oprette en bil, til denne kunde?");
-                        Console.Write("Tryk 'Y' for at oprette");
-                        Console.WriteLine("Tryk 'N' For at slutte");
-                        string answer2 = Console.ReadLine();
-
-                        if (answer2.ToUpper() == "Y")
+                    case "K":
+                        Misc.CustomerPart();
+                        int answer = Convert.ToInt32(Console.ReadLine());
+                        switch (answer)
                         {
-                            Bil.Create();
+                            case 1:
+                                Costumer.Create();
+                                Console.WriteLine("Tilføj nu bil til kunde");
+                                Bil.Create();
+                                break;
+                            case 2:
+                                SQLCon.Select("Select * from customers");
+                                SQLCon.Select("Select * from Car");
+                                break;
+                            case 3:
+                                Costumer.Update();                               
+                                break;
+                            case 4:
+                                Costumer.Delete();
+                                Bil.Delete();
+                                break;
                         }
-                        else
+                        break;
+                    case "B":
+                        Misc.AskCar();
+                        int ChoiceCar = Convert.ToInt32(Console.ReadLine());  
+                        switch (ChoiceCar)
                         {
-                            break;
-                        }                        
+                            case 1:
+                                Bil.AddCar();
+                                break;
+                            case 2:
+                                Bil.Delete();
+                                break;
+                            case 3:
+                                Bil.Update();
+                                break;
+                            default:
+                                Console.WriteLine();
+                                break;
+                        }
                         break;
-                    case 2:
-                        SQLCon.Select("Select * from customers");
-                        SQLCon.Select("Select * from Car");
+                    default:
+                        Misc.Load();
                         break;
-                    case 3:
-                        Costumer.Update();
-                        Bil.Update();
-                        break;
-                    case 4:
-                        Costumer.Delete();
-                        Bil.Delete();
-                        break;
+
+
                 }
-                //Console.ReadLine();
-                Console.WriteLine("Vil du gerne forsætte programmet? ");
-                Console.WriteLine("Tryk på 'N' for at slutte ");
-                Console.Write("Tryk på 'Y' for at forsætte: ");
+                Misc.Ask();
                 string Choice = Console.ReadLine();
                 if (Choice.ToUpper() == "Y")
                 {                    
                 }
                 else
                 {
+                    Misc.Load();
                     done = false;
                 }
             }
