@@ -61,6 +61,25 @@ namespace ConsoleApp1
                     break;
             }
         }
+        public static void AddCar()
+        {
+            Console.WriteLine("Tilføj en bil pr kunde (Kundes Id)");
+            int CostumerId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Indtast bilens model");
+            string modelIN = Console.ReadLine();
+            Console.WriteLine("Indtast bilens mærke");
+            string brandIN = Console.ReadLine();
+            Console.WriteLine("Hvad er bilens registrerings nummer?");
+            string regIN = Console.ReadLine();
+            Console.WriteLine("Hvor mange km har bilen kørt?");
+            int kmIN = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Hvilken type brandstof bruger bilen?");
+            string fuelIN = Console.ReadLine();
+            Console.WriteLine("Hvilket år er bilen fra?");
+            int yearIN = Convert.ToInt32(Console.ReadLine());
+            string fullSentence = "insert into Car (id, Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values (" + CostumerId + ",'" + modelIN + "','" + brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
+            SQLCon.Update(fullSentence);
+        }
     }
     //public string Model { get; set; }
     //public string Brand { get; set; }

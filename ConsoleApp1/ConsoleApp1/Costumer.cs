@@ -18,7 +18,8 @@ namespace ConsoleApp1
             string addIN = Console.ReadLine();
             Console.WriteLine("Indtast kundens alder");
             int ageIN = Convert.ToInt32(Console.ReadLine());
-            string fullStatement = "insert into customers values ('" + kundeIN + "','" + addIN + "'," + ageIN + ")";
+            
+            string fullStatement = "insert into customers values ('" + kundeIN + "','" + addIN + "'," + ageIN + ", getdate())";
             SQLCon.Insert(fullStatement);
         }
 
@@ -48,7 +49,6 @@ namespace ConsoleApp1
                     fullSentence = "update customers set navn = ('" + retNavn + "') where id = ('" + chooseCustomer + "')";
                     SQLCon.Update(fullSentence);
                     break;
-
                 case 2:
                     Console.Write("Skriv din ændring: ");
                     string retAdr = Console.ReadLine();
@@ -60,7 +60,6 @@ namespace ConsoleApp1
                     int retAlder = Convert.ToInt32(Console.ReadLine());
                     fullSentence = "update customers set alder = ('" + retAlder + "') where id = ('" + chooseCustomer + "')";
                     SQLCon.Update(fullSentence);
-
                     break;
             }
         }
