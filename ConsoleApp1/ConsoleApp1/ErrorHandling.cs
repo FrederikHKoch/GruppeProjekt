@@ -20,7 +20,7 @@ namespace ConsoleApp1
             return fullName.TrimEnd();
         }
 
-        public static string Isvalid(string input)
+        public static string IsNameValid(string input)
         {
             string fullName = "";
             string[] splitName = input.Split(' ');
@@ -36,6 +36,11 @@ namespace ConsoleApp1
                 }
             }
             return fullName.TrimEnd();
+        }
+
+        public static string IsAddressValid(string input)
+        {
+
         }
 
     }
