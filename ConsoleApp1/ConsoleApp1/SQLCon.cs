@@ -24,7 +24,7 @@ namespace ConsoleApp1
             }
         }
 
-        public static void Select(string sqlSelect)
+        public static void SelectCustomer(string sqlSelect)
         {
             DataTable table = new DataTable();
             using (SqlConnection con = new SqlConnection(ConnectionString))
@@ -37,9 +37,14 @@ namespace ConsoleApp1
                 {
                     if (customer != null)
                     {
+                        Console.WriteLine();
+                        Console.Write("Kunde id: ");
                         Console.WriteLine(customer["id"].ToString());
+                        Console.Write("Navn: ");
                         Console.WriteLine(customer["navn"].ToString());
+                        Console.Write("Adresse: ");
                         Console.WriteLine(customer["adr"].ToString());
+                        Console.Write("Alder: ");
                         Console.WriteLine(customer["alder"].ToString());
                         Console.WriteLine();
                     }
@@ -69,6 +74,45 @@ namespace ConsoleApp1
                 con.Open();                
                 SqlCommand cmd = new SqlCommand(sqlUpdate, con);
                 cmd.ExecuteNonQuery();
+            }
+        }
+        public static void SelectCar(string sqlSelectCar)
+        {
+            DataTable table = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlSelectCar, con);
+                adapter.Fill(table);
+
+                foreach (DataRow car in table.Rows)
+                {
+                    if (car != null)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Kunde id: ");
+                        Console.WriteLine(car["id"].ToString());
+                        Console.Write("Model: ");
+                        Console.WriteLine(car["Model"].ToString());
+                        Console.Write("Mærke: ");
+                        Console.WriteLine(car["Brand"].ToString());
+                        Console.Write("Registrerings nummer: ");
+                        Console.WriteLine(car["RegNr"].ToString());
+                        Console.Write("Antal Km kørt: ");
+                        Console.WriteLine(car["KiloMeter"].ToString());
+                        Console.Write("Brændstof: ");
+                        Console.WriteLine(car["Fuel"].ToString());
+                        Console.Write("Antal km kørt: ");
+                        Console.WriteLine(car["Year"].ToString());
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Bil bibliotek er tomt");
+                    }
+
+
+                }
             }
         }
 

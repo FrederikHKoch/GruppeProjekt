@@ -32,8 +32,7 @@ namespace ConsoleApp1
                                     Bil.Create();
                                     break;
                                 case 2:
-                                    SQLCon.Select("Select * from customers");
-                                    SQLCon.Select("Select * from Car");
+                                    Misc.WatchTabel();
                                     break;
                                 case 3:
                                     Costumer.Update();
@@ -64,9 +63,7 @@ namespace ConsoleApp1
                             }
                             break;
                         case "V":
-                            Console.WriteLine("Vælg 1. For at oprette et besøg");
-                            Console.WriteLine("Vælg 2. For at redigere et besøg");
-                            Console.WriteLine("Vælg 3. For at slette et besøg");
+                            Misc.AutoChoice();
                             int workshopAnswer = Convert.ToInt32(Console.ReadLine());
                             switch (workshopAnswer)
                             {
@@ -86,8 +83,6 @@ namespace ConsoleApp1
                         default:
                             Misc.Load();
                             break;
-
-
                     }
                     Misc.Ask();
                     string Choice = Console.ReadLine();
@@ -103,8 +98,7 @@ namespace ConsoleApp1
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                }
-                
+                }                
             }
             while (done);            
         }

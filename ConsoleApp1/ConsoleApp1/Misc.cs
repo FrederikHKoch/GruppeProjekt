@@ -21,7 +21,7 @@ namespace ConsoleApp1
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             Console.WriteLine("Loading....");
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(100);
         }
         public static void Ask()
         {
@@ -62,6 +62,17 @@ namespace ConsoleApp1
             Console.WriteLine("Gør alt herinde fra");
             Console.WriteLine("Vil du Arbejde med kunder, eller med biler?");
             Console.WriteLine("Vælg 'K' For Kunde --- Vælg 'B' For bil --- Vælg 'V' For værkstedbesøg");
+        }
+        public static void AutoChoice()
+        {
+            Console.WriteLine("Vælg 1. For at oprette et besøg");
+            Console.WriteLine("Vælg 2. For at redigere et besøg");
+            Console.WriteLine("Vælg 3. For at slette et besøg");
+        }
+        public static void WatchTabel()
+        {
+            SQLCon.SelectCustomer("Select * from customers");
+            SQLCon.SelectCar("Select * from Car");
         }
     }
 }
