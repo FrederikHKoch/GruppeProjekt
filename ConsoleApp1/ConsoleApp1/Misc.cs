@@ -61,7 +61,7 @@ namespace ConsoleApp1
             Console.WriteLine("Autoværksteds App");
             Console.WriteLine("Gør alt herinde fra");
             Console.WriteLine("Vil du Arbejde med kunder, eller med biler?");
-            Console.WriteLine("Vælg 'K' For Kunde --- Vælg 'B' For bil");
+            Console.WriteLine("Vælg 'K' For Kunde --- Vælg 'B' For bil --- Vælg 'V' For værkstedbesøg");
         }
     }
 }

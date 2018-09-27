@@ -11,6 +11,8 @@ namespace ConsoleApp1
 
         public static void Create()
         {
+            Console.WriteLine("Vælg den kundes kundeNr du vil tilføje en bil til");
+            int idChoice = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Indtast bilens model");
             string modelIN = Console.ReadLine();
             Console.WriteLine("Indtast bilens mærke");
@@ -23,7 +25,7 @@ namespace ConsoleApp1
             string fuelIN = Console.ReadLine();
             Console.WriteLine("Hvilket år er bilen fra?");
             int yearIN = Convert.ToInt32(Console.ReadLine());
-            string fullStatement = "insert into Car (Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values ('" + modelIN + "','" +brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
+            string fullStatement = "insert into Car (id, Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values ((select id from customers where id =(" + idChoice + ")),'" + modelIN + "','" + brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
             SQLCon.Insert(fullStatement);
         }
 
@@ -77,7 +79,7 @@ namespace ConsoleApp1
             string fuelIN = Console.ReadLine();
             Console.WriteLine("Hvilket år er bilen fra?");
             int yearIN = Convert.ToInt32(Console.ReadLine());
-            string fullSentence = "insert into Car (id, Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values (" + CostumerId + ",'" + modelIN + "','" + brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
+            string fullSentence = "insert into Car (id, Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values ((select id from customers where id =(" + CostumerId + ")),'" + modelIN + "','" + brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
             SQLCon.Update(fullSentence);
         }
     }

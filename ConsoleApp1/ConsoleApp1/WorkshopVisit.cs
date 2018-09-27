@@ -17,8 +17,6 @@ namespace ConsoleApp1
             SQLCon.Insert(fullSentence);
         }
 
-
-
         public static void Update()
         {
             Console.WriteLine("Vælg værkstedsbesøg du gerne vil rette");
@@ -34,9 +32,11 @@ namespace ConsoleApp1
 
         public static void Delete()
         {
-            Console.WriteLine("Vælg værkstedsbesøg du vil slette(RegNr)");
-            int delAnswer = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Vælg bil du vil slette(RegNr) fra værkstedet");
+            string delAnswer = Console.ReadLine();
+            string insertSentence = "insert into CarLibary(RegNr, VisitDate, LeftDate) Values ((select RegNr from CarLog where RegNr = ('" + delAnswer + "')), (select VisitDate from CarLog where RegNr = ('" + delAnswer + "')), GETDATE())";
             string fullSentence = "DELETE FROM CarLog WHERE RegNr = ('" + delAnswer + "')";
+            SQLCon.Insert(insertSentence);
             SQLCon.Delete(fullSentence);
         }
     }

@@ -29,7 +29,7 @@ namespace ConsoleApp1
                                 case 1:
                                     Costumer.Create();
                                     Console.WriteLine("Tilføj nu bil til kunde");
-                                    //Bil.Create();
+                                    Bil.Create();
                                     break;
                                 case 2:
                                     SQLCon.Select("Select * from customers");
@@ -60,6 +60,26 @@ namespace ConsoleApp1
                                     break;
                                 default:
                                     Console.WriteLine();
+                                    break;
+                            }
+                            break;
+                        case "V":
+                            Console.WriteLine("Vælg 1. For at oprette et besøg");
+                            Console.WriteLine("Vælg 2. For at redigere et besøg");
+                            Console.WriteLine("Vælg 3. For at slette et besøg");
+                            int workshopAnswer = Convert.ToInt32(Console.ReadLine());
+                            switch (workshopAnswer)
+                            {
+                                case 1:
+                                    WorkshopVisit.Create();
+                                    break;
+                                case 2:
+                                    WorkshopVisit.Update();
+                                    break;
+                                case 3:
+                                    WorkshopVisit.Delete();
+                                    break;
+                                default:
                                     break;
                             }
                             break;
