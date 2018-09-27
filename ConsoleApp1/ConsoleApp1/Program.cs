@@ -27,13 +27,27 @@ namespace ConsoleApp1
                             switch (answer)
                             {
                                 case 1:
-                                    Costumer.Create();
+                                    //Costumer.Create();
                                     Console.WriteLine("Tilføj nu bil til kunde");
-                                    //Bil.Create();
+                                    Bil.Create();
                                     break;
                                 case 2:
-                                    SQLCon.Select("Select * from customers");
-                                    SQLCon.Select("Select * from Car");
+                                    Misc.ChooseCustomer();
+                                    string customerChoice = Console.ReadLine();
+                                    switch (customerChoice.ToUpper())
+                                    {
+                                        case "A":
+                                            SQLCon.SelectCustomer("Select * from customers");
+                                            SQLCon.SelectCar("Select * from Car");
+                                            //SQLCon.Select("Select * from CarLog");
+                                            //SQLCon.Select("Select * from CarLibary");
+                                            break;
+                                        case "E":
+                                            SQLCon.SelectCustomer("Select * from customers where id = ()");
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     break;
                                 case 3:
                                     Costumer.Update();

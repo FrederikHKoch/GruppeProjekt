@@ -21,7 +21,7 @@ namespace ConsoleApp1
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             Console.WriteLine("Loading....");
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(100);
         }
         public static void Ask()
         {
@@ -56,12 +56,18 @@ namespace ConsoleApp1
             Console.WriteLine("4. Slet kunde");
          }
          public static void ProgramStart()
-        {
+         {
             Console.WriteLine("");
             Console.WriteLine("Autoværksteds App");
             Console.WriteLine("Gør alt herinde fra");
             Console.WriteLine("Vil du Arbejde med kunder, eller med biler?");
             Console.WriteLine("Vælg 'K' For Kunde --- Vælg 'B' For bil");
-        }
+         }
+         public static void ChooseCustomer()
+         {
+            Console.WriteLine("Vil du se alle kunder - Tast 'A'");
+            Console.WriteLine("Vil du se enkelt kunde - Tast 'E'");
+         }
+        
     }
 }
