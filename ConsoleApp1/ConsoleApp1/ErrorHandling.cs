@@ -38,10 +38,10 @@ namespace ConsoleApp1
             return fullName.TrimEnd();
         }
 
-        public static string IsAddressValid(string input)
-        {
+        //public static string IsAddressValid(string input)
+        //{
 
-        }
+        //}
 
     }
 }
