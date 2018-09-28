@@ -75,6 +75,22 @@ namespace ConsoleApp1
                 
             }
         }
+        public static string IsRegValid(string regNr)
+        {
+            string fullReg = "";
+            foreach (char letter in regNr)
+            {
+                if (Regex.IsMatch(Convert.ToString(letter),@"^[a-zA-Z]+$"))
+                {
+                    fullReg += Convert.ToString(letter).ToUpper();
+                }
+                else
+                {
+                    fullReg += letter;
+                }
+            }
+            return fullReg;
+        }
         
 
     }

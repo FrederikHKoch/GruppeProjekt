@@ -18,7 +18,7 @@ namespace ConsoleApp1
             Console.WriteLine("Indtast bilens mærke");
             string brandIN = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine()));
             Console.WriteLine("Hvad er bilens registrerings nummer?");
-            string regIN = Console.ReadLine();//Mangler Fejlhåndtering
+            string regIN = ErrorHandling.IsRegValid(Console.ReadLine());
             Console.WriteLine("Hvor mange km har bilen kørt?");
             int kmIN = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             Console.WriteLine("Hvilken type brandstof bruger bilen?");
@@ -31,14 +31,14 @@ namespace ConsoleApp1
         public static void Delete()
         {
             Console.WriteLine("Vælg kunde du vil slette bil (Regnr)");
-            string delAnswer = Console.ReadLine();//Mangler Fejlhåndtering
+            string delAnswer = ErrorHandling.IsRegValid(Console.ReadLine());//Mangler Fejlhåndtering
             string fullSentence = "delete from car where RegNr = ('" + delAnswer + "')";
             SQLCon.Delete(fullSentence);
         }
         public static void Update()
         {
             Console.WriteLine("Vælg bil du vil rette (Reg-Nr)");
-            string chooseCar = Console.ReadLine();//Mangler Fejlhåndtering
+            string chooseCar = ErrorHandling.IsRegValid(Console.ReadLine());//Mangler Fejlhåndtering
             Console.WriteLine("Vælg hvad du vil rette");
             Console.WriteLine("1. Km");
             Console.WriteLine("2. Fuel");            
@@ -70,7 +70,7 @@ namespace ConsoleApp1
             Console.WriteLine("Indtast bilens mærke");
             string brandIN = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Hvad er bilens registrerings nummer?");
-            string regIN = Console.ReadLine();//Mangler Fejlhåndtering
+            string regIN = ErrorHandling.IsRegValid(Console.ReadLine());//Mangler Fejlhåndtering
             Console.WriteLine("Hvor mange km har bilen kørt?");
             int kmIN = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             Console.WriteLine("Hvilken type brandstof bruger bilen?");

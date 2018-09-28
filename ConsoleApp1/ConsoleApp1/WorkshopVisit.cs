@@ -19,10 +19,10 @@ namespace ConsoleApp1
 
         public static void Update()
         {
-            Console.WriteLine("Vælg værkstedsbesøg du gerne vil rette");
-            int chooseCarLog = Convert.ToInt32(Console.ReadLine()); //Mangler Fejlhåndtering
+            Console.WriteLine("Vælg værkstedsbesøg du gerne vil rette (RegNr)");
+            string chooseCarLog = Console.ReadLine(); //Mangler Fejlhåndtering
             string fullSentence;
-            int answerTwo = Convert.ToInt32(Console.ReadLine()); //Mangler Fejlhåndtering
+            int answerTwo = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
 
             Console.WriteLine("Skriv din ændring");
             string retRegNr = Console.ReadLine(); //Mangler Fejlhåndtering
@@ -46,7 +46,7 @@ namespace ConsoleApp1
             Console.WriteLine("Tryk 2. for at se en liste over alle biler på værksted");
             Console.WriteLine("Tryk 3. for at se en liste over en enkelts bil samlede værkstedsbesøg");
             Console.WriteLine("Tryk 4. for at se en alle biler der har været på værksted");
-            int choice = Convert.ToInt32(Console.ReadLine());//Mangler Fejlhåndtering
+            int choice = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             switch (choice)
             {
                 case 1:
@@ -60,7 +60,6 @@ namespace ConsoleApp1
                     break;
                 case 4:
                     Misc.ChooseAllWatchLibrary();
-                    break;
                     break;
                 default:
                     break;
