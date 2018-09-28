@@ -46,6 +46,8 @@ namespace ConsoleApp1
                         Console.WriteLine(customer["adr"].ToString());
                         Console.Write("Alder: ");
                         Console.WriteLine(customer["alder"].ToString());
+                        Console.Write("Oprettelses dato: ");
+                        Console.WriteLine(customer["oprettet"].ToString());
                         Console.WriteLine();
                     }
                     else
@@ -115,7 +117,45 @@ namespace ConsoleApp1
                 }
             }
         }
+        public static void SelectLog(string sqlLog)
+        {
+            DataTable table = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlLog, con);
+                adapter.Fill(table);
+                foreach (DataRow CarLog in table.Rows)
+                {
+                    Console.Write("Bilens Registreringsnummer: ");
+                    Console.WriteLine(CarLog["RegNr"].ToString());
+                    Console.Write("Dato for værkstedsbesøg: ");
+                    Console.WriteLine(CarLog["VisitDate"].ToString());
+                    Console.WriteLine();
+                }
+            }
+        }
 
+        public static void SelectLibrary(string sqlLibrary)
+        {
+            DataTable table = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlLibrary, con);
+                adapter.Fill(table);
 
+                foreach (DataRow carLibrary in table.Rows)
+                {
+                    Console.Write("Bilens Registreringsnummer: ");
+                    Console.WriteLine(carLibrary["RegNr"].ToString());
+                    Console.Write("Dato for værkstedsbesøg: ");
+                    Console.WriteLine(carLibrary["VisitDate"].ToString());
+                    Console.Write("Dato for færdig værkstedsbesøg: ");
+                    Console.WriteLine(carLibrary["LeftDate"].ToString());
+                    Console.WriteLine();
+                }
+            }
+        }
     }
 }

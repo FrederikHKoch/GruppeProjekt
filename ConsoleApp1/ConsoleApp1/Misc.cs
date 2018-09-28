@@ -10,15 +10,14 @@ namespace ConsoleApp1
     {
         public static void Load()
         {
-
             Console.WriteLine("Loading.");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
             Console.Clear();
             Console.WriteLine("Loading..");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
             Console.Clear();
             Console.WriteLine("Loading...");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
             Console.Clear();
             Console.WriteLine("Loading....");
             System.Threading.Thread.Sleep(100);
@@ -35,19 +34,6 @@ namespace ConsoleApp1
             Console.WriteLine("2. Slette bil fra kunde");
             Console.WriteLine("3. Opdatere en bil til nuværende kunde");
         }
-        /*Console.WriteLine("Vil du gerne oprette en bil, til denne kunde?");
-                          Console.Write("Tryk 'Y' for at oprette");
-                          Console.WriteLine("Tryk 'N' For at slutte");
-                          string answer2 = Console.ReadLine();
-
-                          if (answer2.ToUpper() == "Y")
-                          {
-                              Bil.Create();
-                          }
-                          else
-                          {
-                              break;
-                          }*/
          public static void CustomerPart()
          {
             Console.WriteLine("1. Opret en ny kunde og bil");
@@ -68,11 +54,38 @@ namespace ConsoleApp1
             Console.WriteLine("Vælg 1. For at oprette et besøg");
             Console.WriteLine("Vælg 2. For at redigere et besøg");
             Console.WriteLine("Vælg 3. For at slette et besøg");
+            Console.WriteLine("Vælg 4. For at se biler på værksted");
         }
         public static void WatchTabel()
         {
             SQLCon.SelectCustomer("Select * from customers");
             SQLCon.SelectCar("Select * from Car");
+        }
+        public static void WatchLog()
+        {
+            Console.WriteLine("Vælg bilens Registreringsnummer for at få vist værkstedsbesøg");
+            string chooseCar = Console.ReadLine();
+            SQLCon.SelectLog("Select * from CarLog where RegNr = ('" + chooseCar + "')");
+        }
+
+        public static void ChooseAllWatchLog()
+        {
+            Console.WriteLine("Liste over alle biler på værkstedet");
+            Console.WriteLine();
+            SQLCon.SelectLog("Select * from CarLog");
+        }
+
+        public static void WatchLibrary()
+        {
+            Console.WriteLine("Vælg bilens RegNr for at se alle bilens værkstedsbesøg");
+            string chooseCar = Console.ReadLine();
+            SQLCon.SelectLibrary("select * from CarLibrary where RegNr = ('" + chooseCar + "')");
+        }
+
+        public static void ChooseAllWatchLibrary()
+        {
+            Console.WriteLine("En liste over alle biler der har været på værksted");
+            SQLCon.SelectLibrary("select * from CarLibrary");
         }
     }
 }

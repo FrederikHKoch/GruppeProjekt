@@ -12,52 +12,50 @@ namespace ConsoleApp1
         public static void Create()
         {
             Console.WriteLine("Vælg den kundes kundeNr du vil tilføje en bil til");
-            int idChoice = Convert.ToInt32(Console.ReadLine());
+            int idChoice = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             Console.WriteLine("Indtast bilens model");
-            string modelIN = Console.ReadLine();
+            string modelIN = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine()));
             Console.WriteLine("Indtast bilens mærke");
-            string brandIN = Console.ReadLine();
+            string brandIN = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine()));
             Console.WriteLine("Hvad er bilens registrerings nummer?");
-            string regIN = Console.ReadLine();
+            string regIN = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Hvor mange km har bilen kørt?");
-            int kmIN = Convert.ToInt32(Console.ReadLine());
+            int kmIN = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             Console.WriteLine("Hvilken type brandstof bruger bilen?");
-            string fuelIN = Console.ReadLine();
+            string fuelIN = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Hvilket år er bilen fra?");
-            int yearIN = Convert.ToInt32(Console.ReadLine());
+            int yearIN = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             string fullStatement = "insert into Car (id, Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values ((select id from customers where id =(" + idChoice + ")),'" + modelIN + "','" + brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
             SQLCon.Insert(fullStatement);
         }
-
         public static void Delete()
         {
             Console.WriteLine("Vælg kunde du vil slette bil (Regnr)");
-            string delAnswer = Console.ReadLine();
+            string delAnswer = Console.ReadLine();//Mangler Fejlhåndtering
             string fullSentence = "delete from car where RegNr = ('" + delAnswer + "')";
             SQLCon.Delete(fullSentence);
         }
-
         public static void Update()
         {
             Console.WriteLine("Vælg bil du vil rette (Reg-Nr)");
-            int chooseCar = Convert.ToInt32(Console.ReadLine());
+            string chooseCar = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Vælg hvad du vil rette");
             Console.WriteLine("1. Km");
             Console.WriteLine("2. Fuel");            
             string fullSentence;
-            int answerTwo = Convert.ToInt32(Console.ReadLine());
+            int answerTwo = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             switch (answerTwo)
             {
                 case 1:
                     Console.Write("Skriv din ændring: ");
-                    string retKM = Console.ReadLine();
+                    int retKM = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
                     fullSentence = "update car set KiloMeter = ('" + retKM + "') where RegNr = ('" + chooseCar + "')";
                     SQLCon.Update(fullSentence);
                     break;
 
                 case 2:
                     Console.Write("Skriv din ændring: ");
-                    string retFuel = Console.ReadLine();
+                    string retFuel = Console.ReadLine();//Mangler Fejlhåndtering
                     fullSentence = "update car set Fuel = ('" + retFuel + "') where RegNr = ('" + chooseCar + "')";
                     SQLCon.Update(fullSentence);
                     break;
@@ -66,30 +64,22 @@ namespace ConsoleApp1
         public static void AddCar()
         {
             Console.WriteLine("Tilføj en bil pr kunde (Kundes Id)");
-            int CostumerId = Convert.ToInt32(Console.ReadLine());
+            int CostumerId = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             Console.WriteLine("Indtast bilens model");
-            string modelIN = Console.ReadLine();
+            string modelIN = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Indtast bilens mærke");
-            string brandIN = Console.ReadLine();
+            string brandIN = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Hvad er bilens registrerings nummer?");
-            string regIN = Console.ReadLine();
+            string regIN = Console.ReadLine();//Mangler Fejlhåndtering
             Console.WriteLine("Hvor mange km har bilen kørt?");
-            int kmIN = Convert.ToInt32(Console.ReadLine());
+            int kmIN = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             Console.WriteLine("Hvilken type brandstof bruger bilen?");
-            string fuelIN = Console.ReadLine();
+            string fuelIN = Console.ReadLine(); //Mangler Fejlhåndtering
             Console.WriteLine("Hvilket år er bilen fra?");
-            int yearIN = Convert.ToInt32(Console.ReadLine());
+            int yearIN = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
             string fullSentence = "insert into Car (id, Model, Brand, RegNr, KiloMeter, Fuel, [Year]) values ((select id from customers where id =(" + CostumerId + ")),'" + modelIN + "','" + brandIN + "','" + regIN + "', " + kmIN + ", '" + fuelIN + "', " + yearIN + ")";
             SQLCon.Update(fullSentence);
         }
     }
-    //public string Model { get; set; }
-    //public string Brand { get; set; }
-    //public string Fuel { get; set; }
-    //public int RegNr { get; set; }
-    //public int Year { get; set; }
-    //public int KiloMeter { get; set; }
-
-
 }
 

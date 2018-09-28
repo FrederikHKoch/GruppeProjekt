@@ -38,10 +38,44 @@ namespace ConsoleApp1
             return fullName.TrimEnd();
         }
 
-        //public static string IsAddressValid(string input)
-        //{
-
-        //}
+        public static string IsAddressValid(string input)
+        {
+            string textString = "";
+            if (Regex.IsMatch(input, @"^[,.'^+?´`|/()][=¤%&\<>]+$"))
+            {
+                return textString = "Ugyldig adresse";
+            }
+            else
+            {
+                string[] textSplit = input.Split(' ');
+                foreach (var unit in textSplit)
+                {
+                    if (unit.Contains("0-9"))
+                    {
+                        textString += unit;
+                    }
+                    else
+                    {
+                        textString += unit.Substring(0, 1).ToUpper() + unit.Substring(1).ToLower() + " ";
+                    }
+                }
+                return textString;
+            }
+        }
+        public static string IsNumberValid(string number)
+        {
+            if (Regex.IsMatch(number,@"^[0-9]+$"))
+            {
+                return number;
+            }
+            else
+            {
+                Console.Clear();
+                throw new Exception("Må ikke indeholde tegn eller bogstaver. kun tal fra 0-9");
+                
+            }
+        }
+        
 
     }
 }

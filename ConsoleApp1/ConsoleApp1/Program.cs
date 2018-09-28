@@ -19,16 +19,19 @@ namespace ConsoleApp1
                 {
                     Misc.ProgramStart();
                     string choice = Console.ReadLine();
+                    Console.Clear();
                     switch (choice.ToUpper())
                     {
                         case "K":
                             Misc.CustomerPart();
-                            int answer = Convert.ToInt32(Console.ReadLine());
+                            int answer = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
+                            Console.Clear();
                             switch (answer)
                             {
                                 case 1:
                                     Costumer.Create();
-                                    Console.WriteLine("Tilføj nu bil til kunde");
+                                    Console.Clear();
+                                    Console.WriteLine("Tilføj nu bil til kunde");                                   
                                     Bil.Create();
                                     break;
                                 case 2:
@@ -45,7 +48,8 @@ namespace ConsoleApp1
                             break;
                         case "B":
                             Misc.AskCar();
-                            int ChoiceCar = Convert.ToInt32(Console.ReadLine());
+                            int ChoiceCar = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
+                            Console.Clear();
                             switch (ChoiceCar)
                             {
                                 case 1:
@@ -64,7 +68,8 @@ namespace ConsoleApp1
                             break;
                         case "V":
                             Misc.AutoChoice();
-                            int workshopAnswer = Convert.ToInt32(Console.ReadLine());
+                            int workshopAnswer = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
+                            Console.Clear();
                             switch (workshopAnswer)
                             {
                                 case 1:
@@ -76,6 +81,9 @@ namespace ConsoleApp1
                                 case 3:
                                     WorkshopVisit.Delete();
                                     break;
+                                case 4:
+                                    WorkshopVisit.View();
+                                    break;
                                 default:
                                     break;
                             }
@@ -86,6 +94,7 @@ namespace ConsoleApp1
                     }
                     Misc.Ask();
                     string Choice = Console.ReadLine();
+                    Console.Clear();
                     if (Choice.ToUpper() == "Y")
                     {
                     }

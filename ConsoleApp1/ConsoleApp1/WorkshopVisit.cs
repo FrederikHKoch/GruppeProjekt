@@ -20,12 +20,12 @@ namespace ConsoleApp1
         public static void Update()
         {
             Console.WriteLine("Vælg værkstedsbesøg du gerne vil rette");
-            int chooseCarLog = Convert.ToInt32(Console.ReadLine());
+            int chooseCarLog = Convert.ToInt32(Console.ReadLine()); //Mangler Fejlhåndtering
             string fullSentence;
-            int answerTwo = Convert.ToInt32(Console.ReadLine());
+            int answerTwo = Convert.ToInt32(Console.ReadLine()); //Mangler Fejlhåndtering
 
             Console.WriteLine("Skriv din ændring");
-            string retRegNr = Console.ReadLine();
+            string retRegNr = Console.ReadLine(); //Mangler Fejlhåndtering
             fullSentence = "UPDATE CarLog SET RegNr = ('" + retRegNr + "') WHERE RegNr = ('" + chooseCarLog + "')";
             SQLCon.Update(fullSentence);
         }
@@ -33,11 +33,39 @@ namespace ConsoleApp1
         public static void Delete()
         {
             Console.WriteLine("Vælg bil du vil slette(RegNr) fra værkstedet");
-            string delAnswer = Console.ReadLine();
+            string delAnswer = Console.ReadLine();//Mangler Fejlhåndtering
             string insertSentence = "insert into CarLibary(RegNr, VisitDate, LeftDate) Values ((select RegNr from CarLog where RegNr = ('" + delAnswer + "')), (select VisitDate from CarLog where RegNr = ('" + delAnswer + "')), GETDATE())";
             string fullSentence = "DELETE FROM CarLog WHERE RegNr = ('" + delAnswer + "')";
             SQLCon.Insert(insertSentence);
             SQLCon.Delete(fullSentence);
         }
+
+        public static void View()
+        {
+            Console.WriteLine("Tryk 1. for at se en enkelt bil på værksted");
+            Console.WriteLine("Tryk 2. for at se en liste over alle biler på værksted");
+            Console.WriteLine("Tryk 3. for at se en liste over en enkelts bil samlede værkstedsbesøg");
+            Console.WriteLine("Tryk 4. for at se en alle biler der har været på værksted");
+            int choice = Convert.ToInt32(Console.ReadLine());//Mangler Fejlhåndtering
+            switch (choice)
+            {
+                case 1:
+                    Misc.WatchLog();
+                    break;
+                case 2:
+                    Misc.ChooseAllWatchLog();
+                    break;
+                case 3:
+                    Misc.WatchLibrary();
+                    break;
+                case 4:
+                    Misc.ChooseAllWatchLibrary();
+                    break;
+                    break;
+                default:
+                    break;
+            }
+        }
+       
     }
 }
