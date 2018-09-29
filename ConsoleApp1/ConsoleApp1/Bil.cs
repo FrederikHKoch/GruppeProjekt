@@ -31,14 +31,14 @@ namespace ConsoleApp1
         public static void Delete()
         {
             Console.WriteLine("Vælg kunde du vil slette bil (Regnr)");
-            string delAnswer = ErrorHandling.IsRegValid(Console.ReadLine());//Mangler Fejlhåndtering
+            string delAnswer = ErrorHandling.IsRegValid(Console.ReadLine());
             string fullSentence = "delete from car where RegNr = ('" + delAnswer + "')";
             SQLCon.Delete(fullSentence);
         }
         public static void Update()
         {
             Console.WriteLine("Vælg bil du vil rette (Reg-Nr)");
-            string chooseCar = ErrorHandling.IsRegValid(Console.ReadLine());//Mangler Fejlhåndtering
+            string chooseCar = ErrorHandling.IsRegValid(Console.ReadLine());
             Console.WriteLine("Vælg hvad du vil rette");
             Console.WriteLine("1. Km");
             Console.WriteLine("2. Fuel");            

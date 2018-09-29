@@ -12,7 +12,7 @@ namespace ConsoleApp1
         {
 
             Console.WriteLine("Vælg Bil du gerne vil have på værksted(RegNr)");
-            string regNrIN = Console.ReadLine();
+            string regNrIN = ErrorHandling.IsRegValid(Console.ReadLine());
             string fullSentence = "INSERT INTO CarLog VALUES ((SELECT RegNr FROM Car WHERE RegNr = ('" + regNrIN + "')), GETDATE())";
             SQLCon.Insert(fullSentence);
         }
@@ -20,12 +20,12 @@ namespace ConsoleApp1
         public static void Update()
         {
             Console.WriteLine("Vælg værkstedsbesøg du gerne vil rette (RegNr)");
-            string chooseCarLog = Console.ReadLine(); //Mangler Fejlhåndtering
+            string chooseCarLog = ErrorHandling.IsRegValid(Console.ReadLine()); 
             string fullSentence;
             int answerTwo = Convert.ToInt32(ErrorHandling.IsNumberValid(Console.ReadLine()));
 
             Console.WriteLine("Skriv din ændring");
-            string retRegNr = Console.ReadLine(); //Mangler Fejlhåndtering
+            string retRegNr = ErrorHandling.IsRegValid(Console.ReadLine()); 
             fullSentence = "UPDATE CarLog SET RegNr = ('" + retRegNr + "') WHERE RegNr = ('" + chooseCarLog + "')";
             SQLCon.Update(fullSentence);
         }
@@ -33,7 +33,7 @@ namespace ConsoleApp1
         public static void Delete()
         {
             Console.WriteLine("Vælg bil du vil slette(RegNr) fra værkstedet");
-            string delAnswer = Console.ReadLine();//Mangler Fejlhåndtering
+            string delAnswer = ErrorHandling.IsRegValid(Console.ReadLine());
             string insertSentence = "insert into CarLibary(RegNr, VisitDate, LeftDate) Values ((select RegNr from CarLog where RegNr = ('" + delAnswer + "')), (select VisitDate from CarLog where RegNr = ('" + delAnswer + "')), GETDATE())";
             string fullSentence = "DELETE FROM CarLog WHERE RegNr = ('" + delAnswer + "')";
             SQLCon.Insert(insertSentence);

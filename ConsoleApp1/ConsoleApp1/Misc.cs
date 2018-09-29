@@ -64,7 +64,7 @@ namespace ConsoleApp1
         public static void WatchLog()
         {
             Console.WriteLine("Vælg bilens Registreringsnummer for at få vist værkstedsbesøg");
-            string chooseCar = Console.ReadLine();
+            string chooseCar = ErrorHandling.IsRegValid(Console.ReadLine());
             SQLCon.SelectLog("Select * from CarLog where RegNr = ('" + chooseCar + "')");
         }
 
@@ -78,7 +78,7 @@ namespace ConsoleApp1
         public static void WatchLibrary()
         {
             Console.WriteLine("Vælg bilens RegNr for at se alle bilens værkstedsbesøg");
-            string chooseCar = Console.ReadLine();
+            string chooseCar = ErrorHandling.IsRegValid(Console.ReadLine());
             SQLCon.SelectLibrary("select * from CarLibrary where RegNr = ('" + chooseCar + "')");
         }
 
