@@ -35,6 +35,20 @@ namespace ConsoleApp1
                                     Bil.Create();
                                     break;
                                 case 2:
+                                    Console.WriteLine("1. Se alle kunder og biler, sorteret");
+                                    Console.WriteLine("2. Se enkelt kunde og bil(er)");
+                                    int Watch = Convert.ToInt32(Console.ReadLine());
+                                    switch (Watch)
+                                    {
+                                        case 1:
+                                            Misc.WatchTabel();
+                                            break;
+                                        case 2:
+                                            Misc.ShowCustomer();
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     Misc.WatchTabel();
                                     break;
                                 case 3:
@@ -60,6 +74,9 @@ namespace ConsoleApp1
                                     break;
                                 case 3:
                                     Bil.Update();
+                                    break;
+                                case 4:
+                                    Bil.ViewCarSorted();
                                     break;
                                 default:
                                     Console.WriteLine();

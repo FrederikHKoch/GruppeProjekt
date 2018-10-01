@@ -58,8 +58,8 @@ namespace ConsoleApp1
         }
         public static void WatchTabel()
         {
-            SQLCon.SelectCustomer("Select * from customers");
-            SQLCon.SelectCar("Select * from Car");
+            SQLCon.SelectCustomer("Select * from customers order by navn asc");
+            SQLCon.SelectCar("Select * from Car order by Brand, Model asc");
         }
         public static void WatchLog()
         {
@@ -86,6 +86,12 @@ namespace ConsoleApp1
         {
             Console.WriteLine("En liste over alle biler der har været på værksted");
             SQLCon.SelectLibrary("select * from CarLibrary");
+        }
+        public static void ShowCustomer()
+        {
+            Console.WriteLine("Hvilken kunde vil du se? (Vælg kunde nummer)");
+            int CustomerNumber = Convert.ToInt32(Console.ReadLine());
+            SQLCon.SelectCustomer("Select * from customer where id =(" + CustomerNumber + ")");
         }
     }
 }

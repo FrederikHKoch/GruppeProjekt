@@ -13,7 +13,7 @@ namespace ConsoleApp1
         public static void Create()
         {
             Console.WriteLine("Indtast kundens navn");
-            string kundeIN = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine())); //Fejlhåndteret
+            string kundeIN = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine()));
             Console.WriteLine("Adresse");
             string addIN = ErrorHandling.IsAddressValid(Console.ReadLine());
             Console.WriteLine("Indtast kundens alder");

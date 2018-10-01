@@ -91,6 +91,30 @@ namespace ConsoleApp1
             }
             return fullReg;
         }
+        public static string IsFuelValid(string fuelInput)
+        {
+            string fuelString = "";
+            foreach (char letter in fuelInput)
+            {
+                if (Regex.IsMatch(Convert.ToString(letter),@"^[dDiIeEsSlLBbyYfFrR952]+$"))
+                {
+                    if (Regex.IsMatch(Convert.ToString(letter), @"^[dDiIeEsSlLBbyYfFrR]+$"))
+                    {
+                        fuelString += letter;
+                    }
+                    else if (Regex.IsMatch(Convert.ToString(letter), @"^[952]+$"))
+                    {
+                        fuelString += letter;
+                    }
+                    else
+                    {
+                        throw new Exception("Der kan kun stå 'Diesel', 'Blyfri 92 - 95', eller 'El'");
+                    }
+                }
+            }
+            return fuelString;
+
+        }
         
 
     }
