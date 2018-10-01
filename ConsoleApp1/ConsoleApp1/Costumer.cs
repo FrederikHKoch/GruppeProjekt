@@ -44,7 +44,7 @@ namespace ConsoleApp1
             {
                 case 1:
                     Console.Write("Skriv din ændring: ");
-                    string retNavn = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine())); //Fejlhåndteret
+                    string retNavn = ErrorHandling.BigStartLetters(ErrorHandling.IsNameValid(Console.ReadLine()));
                     fullSentence = "update customers set navn = ('" + retNavn + "') where id = ('" + chooseCustomer + "')";
                     SQLCon.Update(fullSentence);
                     break;
