@@ -86,6 +86,7 @@ namespace ConsoleApp1
             string CarRegNr = Console.ReadLine();
             SQLCon.SelectCar("select * from Car where RegNr = ('" + CarRegNr + "')");
         }
+
     }
 }
 
